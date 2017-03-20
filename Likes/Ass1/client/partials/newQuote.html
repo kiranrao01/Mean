@@ -1,0 +1,14 @@
+<div ng-controller="sessionController as SC">
+	<div ng-controller="quotesController as QC">
+		<h3>Create new Quote</h3>
+		<form>
+			<div class="form-group">
+			    <textarea class="form-control" placeholder="Enter quote.." ng-model="QC.newQuote.quoteText"></textarea>
+		    </div>
+		    <div>
+			    <input type="submit" class="btn btn-primary" value="Create" ng-click="QC.createQuote()">
+			    <button class="btn btn-danger" ng-click="QC.cancel()">Cancel</button>
+		    </div>
+		</form>
+	</div>
+</div>

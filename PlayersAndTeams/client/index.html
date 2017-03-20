@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src = 'angular/angular.js'></script>
+        <script src = 'angular-route/angular-route.js'></script>
+        <script src = './app.js'></script>
+        <script src = './factories/playerFactory.js'></script>
+        <script src = './factories/teamFactory.js'></script>
+        <script src = './controllers/players.js'></script>
+        <script src = './controllers/teams.js'></script>
+        <script src = './controllers/associations.js'></script>
+    </head>
+    <body ng-app = 'app'>
+        <p><a href = '#!/players'>Players</a></p>
+        <p><a href = '#!/teams'>Teams</a></p>
+        <p><a href = '#!/associations'>Associations</a></p>
+        <div ng-view="">
+        </div>
+    </body>

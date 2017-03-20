@@ -1,0 +1,26 @@
+<div ng-controller="quotesController as QC" class="col-sm-8 col-sm-offset-2">
+	<div>
+		<input type="text" placeholder="Enter searchText" ng-model="searchText.$">
+	</div>
+	
+	<h3>Awesome Quotes</h3>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Quote</th>
+				<th>Author</th>
+				<th>Date</th>
+				<th>Likes</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="quote in QC.quotesList | orderBy:'-likes' | filter:searchText" >
+				<td>{{quote.quoteText}}</td>
+				<td>{{quote.author.name}}</td>
+				<td>{{quote.createdAt | date:format:'medium'}}</td>
+				<td>{{quote.likes}} <a href="#/showAllQuotes" class="btn btn-primary" ng-click="QC.likeQuote(quote._id)">+</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script src = 'angular/angular.js'></script>
+        <script src = './app.js'></script>
+        <script src = './factories/product.js'></script>
+        <script src = './controllers/product.js'></script>
+        <script src = './controllers/order.js'></script>
+    </head>
+    <body ng-app = 'app'>
+        <div ng-controller="productsController">
+            <h1>Products</h1>
+            <p>Product Name: <input type="text" ng-model="product.name"></p>
+            <p>Product Price: <input type="number" step=".01" ng-model="product.price"></p>
+            <button ng-click="add(product)">Add Product</button>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="prod in products | orderBy: '-price' track by $index">
+                        <td>{{prod.name}}</td>
+                        <td>{{prod.price | currency}}</td>
+                        <td><button ng-click = 'remove($index)'>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-controller="orderController">
+            <h1>Orders</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty Available</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products | orderBy: '-price' track by $index">
+                        <td>{{product.name}}</td>
+                        <td>{{product.price | currency}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td><button ng-click = 'buy($index)'>Buy</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<div ng-controller="sessionController as SC">
+	<div style="float:right">
+		Welcome {{SC.cur_user.name}}! <a href="/logout">logout</a>
+	</div>
+	<div ng-controller="quotesController as QC" class="col-sm-8 col-sm-offset-2">
+		<h3>Favourite Quotes</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Quote</th>
+					<th>Author</th>
+					<th>Date</th>
+					<th>Likes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="quote in QC.quotesList | orderBy:'-likes' | limitTo:3">
+					<td>{{quote.quoteText}}</td>
+					<td>{{quote.author.name}}</td>
+					<td>{{quote.createdAt | date:format:'medium'}}</td>
+					<td>{{quote.likes}} <a href="#" class="btn btn-primary" ng-click="QC.likeQuote(quote._id)">+</a></td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+	<div class="col-sm-6 col-sm-offset-3">
+		<div>
+			<h4> <a href="#/showAllQuotes"> Show All Quotes</a></h4>
+		</div>
+		<div>
+			<h4> <a href="#/createQuote"> Create New Quote</a></h4>
+		</div>
+		<div>
+			<h4> <a href="#/showAllUsers"> Show All Users</a></h4>
+		</div>
+	</div>
+</div>

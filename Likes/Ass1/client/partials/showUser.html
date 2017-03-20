@@ -1,0 +1,7 @@
+<div ng-controller="usersController as UC" class="col-sm-6">
+<h4>{{UC.userInfo.name}}</h4>
+quotes:
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="quote in UC.userInfo.quotes">{{quote.quoteText}}</li>
+</ul>
+</div>
